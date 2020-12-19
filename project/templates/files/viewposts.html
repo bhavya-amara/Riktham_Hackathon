@@ -1,16 +1,87 @@
-{% extends "files/header.html" %} {% block title %}Drops of Life {% endblock %} {%load static %} {% block content %}
-
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+        }
+        .my-container1 {
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .center {
+            margin: auto;
+            width: 100%;
+            padding: 10px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container1 {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .design-button {
+            border-radius: 50%;
+        }
+        
+        .new-container {
+            padding-bottom: 50px;
+        }
+        
+        .jumbotron {
+            padding: 0 0;
+            margin-bottom: 50;
+            background-color: white;
+            background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+        }
+        
+        .items {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .my-row {
+            display: flex;
+            align-content: space-between;
+        }
+        
+        .btn{
+            margin-top:15px;
+        }
+        .typewriter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    
     {%for set in data%}
         <div class="Container">
             <div class="col-md-4">
                 <div class="thumbnail">
-                  <a href={{set[0]}}>
-                    <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
+                  <a href="{{set['image']}}">
+                    <img src="{{set['image']}}" style="width:100%">
                     <div class="row">
                         <div class="col">
                             <a href="#">like</a>
-                            <p>{{set[1]}}</p>
+                            <p>{{set['likes']}}</p>
                         </div>
                         <div class="col">
                             <a href="showcomments">View comments</a>
@@ -21,6 +92,8 @@
             </div>
         </div>
     {%endfor%}
-</div>
+    </div>
+</body>
 
+</html>
 {% endblock content %}
