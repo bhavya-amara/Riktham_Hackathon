@@ -1,0 +1,26 @@
+{% extends "files/header.html" %} {% block title %}Drops of Life {% endblock %} {%load static %} {% block content %}
+
+<div class="container">
+    {%for set in data%}
+        <div class="Container">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                  <a href={{set[0]}}>
+                    <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
+                    <div class="row">
+                        <div class="col">
+                            <a href="#">like</a>
+                            <p>{{set[1]}}</p>
+                        </div>
+                        <div class="col">
+                            <a href="showcomments">View comments</a>
+                        </div>
+                    </div>
+                  </a>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+</div>
+
+{% endblock content %}

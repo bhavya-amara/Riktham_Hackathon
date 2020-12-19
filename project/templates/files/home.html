@@ -1,6 +1,9 @@
 {% extends "files/header.html" %} {% block title %}Drops of Life {% endblock %} {%load static %} {% block content %}
 
 <style>
+    body{
+        background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+    }
     .my-container1 {
         margin-top: 10px;
         margin-left: auto;
@@ -13,9 +16,15 @@
         width: 100%;
         padding: 10px;
     }
+    .container{
+        margin:
+        display: flex;
+        justify-content: center;
+        align-items: center;a
+    }
     
     .container1 {
-        background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+        
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -36,10 +45,6 @@
         background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
     }
     
-    .my-image1 {
-        border-radius: 5%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
     
     .items {
         display: flex;
@@ -52,11 +57,9 @@
         align-content: space-between;
     }
     
-    .my-image2 {
-        max-width: 300px;
-        max-height: 300px;
+    .btn{
+        margin-top:15px;
     }
-    
     .typewriter {
         position: absolute;
         top: 50%;
@@ -65,7 +68,7 @@
     }
 </style>
 <div class="jumbotron">
-    <div class="container my-jumbotron">
+    <div class=" my-jumbotron">
         {% if messages %}
         <div class="alert alert-success" role="alert">
             {% for message in messages %} {{ message }} {% endfor %}
@@ -75,22 +78,65 @@
         </div>
         {% endif %}
         
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <div clas="card-title">
-                <div class="container">
-                    <ul class="nav nav-tabs mb-3 list-inline" role="tablist">
-                        <li class="nav-link active"><a data-toggle="tab" href="signup">Signup</a></li>
-                        
-                        <li class="nav-link"><a data-toggle="tab" href="login">login</a></li>
-                    </ul>
-                </div>
-              </div>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+        <div class="col d-flex justify-content-center">
+            <div class="box">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <div clas="card-title">
+                        <div class="container">
+                            <ul class="nav nav-tabs mb-3 list-inline" role="tablist">
+                                <li class="nav-link active" aria-selected="true"><a data-toggle="tab" href="#signup" >Signup</a></li>
+                                
+                                <li class="nav-link" aria-selected="false"><a data-toggle="tab" href="#login">login</a></li>
+                            </ul>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <div class="tab-content ">
+                            <div id="signup" class="tab-pane fade show active">
+                                <form role='form' action='/signup' method="POST" class='form-design designForm'>
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input name="username" type="email" placeholder="Username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" placeholder="passwrod">
+                                    </div>
+        
+                                    <label>Conform-Password</label>
+                                    <input type="password" name="confrom_password" placeholder="Conform passwrod">
+                                    
+                                    
+                                    <button class="btn btn-lg btn-primary btn-block" style="background: -webkit-linear-gradient(left,
+                                    #4c89fa,#9f76e0);" type="submit">Sign-up</button>
+                                    
+                                </form>
+                            </div>
+                            <div id="login" class="tab-pane fade in active">
+                                <form role='form' action='/login' method="POST" class='form-design designForm'></form>
+                                    {%csrf_token %}
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input name="username" type="email" placeholder="Username">
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" placeholder="passwrod">
+                                    </div>
+    
+                                    <button class="btn btn-lg btn-primary btn-block" style="background: -webkit-linear-gradient(left,
+                                    #4c89fa,#9f76e0);" type="submit">login</button>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
-          </div>
+        </div>
           
 
 <!-- <footer class="page-footer font-small black">
