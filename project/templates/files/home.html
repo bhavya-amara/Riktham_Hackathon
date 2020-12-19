@@ -1,0 +1,108 @@
+{% extends "files/header.html" %} {% block title %}Drops of Life {% endblock %} {%load static %} {% block content %}
+
+<style>
+    .my-container1 {
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    .center {
+        margin: auto;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .container1 {
+        background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    .design-button {
+        border-radius: 50%;
+    }
+    
+    .new-container {
+        padding-bottom: 50px;
+    }
+    
+    .jumbotron {
+        padding: 0 0;
+        margin-bottom: 50;
+        background-color: white;
+        background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+    }
+    
+    .my-image1 {
+        border-radius: 5%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    .items {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .my-row {
+        display: flex;
+        align-content: space-between;
+    }
+    
+    .my-image2 {
+        max-width: 300px;
+        max-height: 300px;
+    }
+    
+    .typewriter {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<div class="jumbotron">
+    <div class="container my-jumbotron">
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %} {{ message }} {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <div clas="card-title">
+                <div class="container">
+                    <ul class="nav nav-tabs mb-3 list-inline" role="tablist">
+                        <li class="nav-link active"><a data-toggle="tab" href="signup">Signup</a></li>
+                        
+                        <li class="nav-link"><a data-toggle="tab" href="login">login</a></li>
+                    </ul>
+                </div>
+              </div>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+          
+
+<!-- <footer class="page-footer font-small black">
+    <small>
+        <div class="footer-copyright text-center py-3">©
+            2020
+            Copyright:
+            <a href="https://BloodDonations.com/">
+                BloodDonations.com</a>
+        </div>
+    </small>
+</footer> -->
+
+
+{% endblock content %}
