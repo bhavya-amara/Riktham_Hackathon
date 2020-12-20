@@ -7,19 +7,17 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
-import random
+import random,datetime
 from .models import MyProfile,Posts,comments
 # Create your views here.
 
 def login(request):
-    global loggedin
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            loggedin = True
             #return HttpResponse("logged successfully")
             return redirect('viewposts')
         else:
@@ -61,17 +59,26 @@ def signup(request):
         return render(request, "files/signup.html")
     
 def displayposts(request):
-    q_set=Posts.objects.all()
-    return render(request,"files/viewposts.html",{'posts':q_set.values()})
+    #q_set=Posts.objects.all()
+    return render(request,"files/viewposts.html")
     
 
 def displaymyposts(request):
-    q_set=Posts.objects.filter(profile=request.user)
-    return render(request,'files/viewprofile.html',{'posts':q_set})
+    #q_set=Posts.objects.filter(profile=request.user)
+    return render(request,'files/viewprofile.html')
 
 
 def upload(request):
     if request.method=='POST':
-        pass
+        img=request.POST['img']
+        title=request.POST['title']
+        decr=request.POST['description']
+        ins=Posts(image=img,title=title,description=desc,date=datetime.datetime.today(),time=datetime.datetime.now())
+        ins.save()
     else:
         return render(request, 'files/createisuue.html')
+
+@login_required(login_url='/login/')
+def logout(request):
+    auth.logout(request)
+    return render(request, 'files/login.html')

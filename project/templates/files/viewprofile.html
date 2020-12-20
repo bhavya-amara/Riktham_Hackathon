@@ -1,6 +1,5 @@
 {% load static%}
 <div class="container">
-
     <nav class="navbar navbar-expand-lg navbar-dark my-nav-bar">
         <div class="container">
             <a class="navbar-brand" href="/home">Drops of Life</a>
@@ -31,21 +30,17 @@
     </nav>
     <div class="container">
     {%for post in posts%}
-        <div class="Container">
-            <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="{% static 'images/post[2]%}">
-                    <img src="{% static 'images/post[2]%}" style="width:100%">
-                    <div class="row">
-                        <div class="col">
-                            <a href="updatelikes">like</a>
-                            <p>{{post['likes']}}</p>
-                        </div>
-                        <div class="col">
-                            <a href="showcomments">View comments</a>
-                        </div>
+        <div class="Card">
+            <div class="card-header">
+                <img src="{post.user.MyProfile.image} style=" width:100%">
+                <div class="row">
+                    <div class="col">
+                        <a href="updatelikes">like</a>
+                        <p>{{post.likes}}</p>
                     </div>
-                  </a>
+                    <div class="col">
+                        <a href="showcomments">View comments</a>
+                    </div>
                 </div>
             </div>
         </div>

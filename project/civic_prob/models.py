@@ -11,10 +11,10 @@ class Posts(models.Model):
     profile=models.ForeignKey(MyProfile,on_delete=models.CASCADE)
     image=models.ImageField(upload_to="images/",null=True,verbose_name="")
     likes=models.IntegerField()
-    date=models.DateField(datetime.datetime.today())
-    time=models.TimeField(datetime.datetime.now())
+    date=models.DateField()
+    time=models.TimeField()
     title=models.CharField(max_length=20)
-    description=models.CharField(max_length=100)
+    description=models.TextField(max_length=100)
 class comments(models.Model):
     user=models.ForeignKey(MyProfile,on_delete=models.CASCADE)
     post=models.ForeignKey(Posts,on_delete=models.CASCADE)

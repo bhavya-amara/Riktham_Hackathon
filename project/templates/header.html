@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <style>
+      .designForm {
+        padding: 30px;
+      }
+      .my-container {
+        margin: auto;
+        margin-top: 100px;
+        max-width: 500px;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .my-nav-bar {
+          box-shadow: 0px 10px 30px rgb(216, 216, 216, 0.45);
+          border-bottom: 1px solid rgb(196, 192, 192);
+          background-color: rgb(161, 4, 4);
+      }
+
+      body {
+        background: -webkit-linear-gradient(left, #c5d3ee, #e7d3e7, rgb(247, 220, 220));
+      }
+
+      .my-form {
+        padding: 30px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .form-design {
+        padding: 40px;
+      }
+      .my-button {
+        border-radius: 5px;
+        background-color: rgb(170, 199, 243);
+        padding: 10px;
+      }
+      .container1 {
+        margin: auto;
+    }
+    .design-form {
+      margin-top: 40px;
+      max-width: 500px;
+      background: -webkit-linear-gradient(left, #e6e5c9, rgb(243, 243, 222), #dbf1c8);
+      border-radius: 25px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+      .my-col {
+        display: flex;
+        justify-content: center;
+      }
+
+      .note {
+        text-align: center;
+        height: 80px;
+        background: -webkit-linear-gradient(left, rgb(160, 5, 5), #2d70ee);
+        color: #fff;
+        line-height: 80px;
+        font-size: x-large;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+      }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark my-nav-bar">
+        <div class="container">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto mr-3">
+                <ul class="navbar-nav ml-auto mr-3">
+                {% if user.is_authenticated %}
+                  <li class="nav-item my-item"><a class="nav-link" href="{% url 'issue-create' %}">New Issue</a></li>
+                  <li class="nav-item my-item"><a class="nav-link" href="{% url 'view_profile' %}">Profile</a></li>
+                  <li class="nav-item my-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                  <li class="nav-item my-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                  <li class="nav-item my-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+                </ul> 
+              </ul>
+            </div>
+        </div>
+      </nav>
+    </nav>
+
+    <main role="main" >
+                {% if messages %} 
+                {% for message in messages %}
+
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %} 
+                {% endif %} 
+                {% block content %}
+                
+                {% endblock %}
+    </main>
+    <br>
+    <div id="sticky-footer" class="py-4 bg-secondry text-black-50">
+        <div class="container text-center">
+            <small>Copyright &copy; Bhavya</small>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

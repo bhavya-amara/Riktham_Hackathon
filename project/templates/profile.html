@@ -1,0 +1,16 @@
+{% extends "header.html" %} 
+{% block title %}Profile{% endblock %} {% block content %}
+<br>
+<div class="container">
+    <div class="container1 design-form" style="padding-left:10px">
+        <h1>Profile</h1>
+        <p>Username: {{ user }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Bio: {{user.bio}}</p>
+        <p>Website: {{user.website}}</p>
+    </div>
+</div>
+
+{% endblock %}
