@@ -8,12 +8,13 @@ class MyProfile(models.Model):
 
 class Posts(models.Model):
     profile=models.ForeignKey(MyProfile,on_delete=models.CASCADE)
-    image=models.ImageField(upload_to="static/images/",null=True,verbose_name="")
+    image=models.ImageField(upload_to="images/",null=True,verbose_name="")
     likes=models.IntegerField()
-    date=models.DateTimeField()
+    date=models.DateField()
     time=models.TimeField()
-
 class comments(models.Model):
-    messages=models.CharField(max_length=100)
     user=models.ForeignKey(MyProfile,on_delete=models.CASCADE)
     post=models.ForeignKey(Posts,on_delete=models.CASCADE)
+    messages=models.CharField(max_length=100)
+    
+    

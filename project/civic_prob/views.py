@@ -55,13 +55,23 @@ def signup(request):
 
             return redirect('viewposts')
         else:
-            messages.info(request, "Password and Confirm Password should match")
+            messages.info(request, "Password and Conform Password should match")
             return redirect('signup')
     else:
         return render(request, "files/signup.html")
     
 def displayposts(request):
     q_set=Posts.objects.all()
-
-    return render(request,"files/viewposts.html",{'data':q_set.values()})
+    return render(request,"files/viewposts.html",{'posts':q_set.values()})
     
+
+def displaymyposts(request):
+    q_set=Posts.objects.filter(profile=request.user)
+    return render(request,'files/viewprofile.html',{'posts':q_set})
+
+
+def upload(request):
+    if request.method=='POST':
+        pass
+    else:
+        return render(request, 'files/createisuue.html')
